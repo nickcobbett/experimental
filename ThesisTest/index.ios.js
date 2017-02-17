@@ -93,48 +93,64 @@ var ThesisTest = React.createClass({
         });
       }
     });
+        BackgroundGeolocation.changePace(true);
+    BackgroundGeolocation.watchPosition(success => {
+      console.log('- Watch position: ', location);)
+    }, (error) => {
+      console.log('- Watch position: ', error)
+    }, {
+      locationUpdateInterval: 1000    // <-- retrieve a location every 5s.
+    }
+
+  },
+  componentDidMount(){
+    BackgroundGeolocation.changePace(true);
+    BackgroundGeolocation.watchPosition(success => {
+      console.log('- Watch position: ', location);)
+    }, (error) => {
+      console.log('- Watch position: ', error)
+    }, {
+      locationUpdateInterval: 1000    // <-- retrieve a location every 5s.
+    }
   },
   // You must remove listeners when your component unmounts
   componentWillUnmount() {
+        BackgroundGeolocation.changePace(true);
+    BackgroundGeolocation.watchPosition(success => {
+      console.log('- Watch position: ', location);)
+    }, (error) => {
+      console.log('- Watch position: ', error)
+    }, {
+      locationUpdateInterval: 1000    // <-- retrieve a location every 5s.
+    }
     // Remove BackgroundGeolocation listeners
     BackgroundGeolocation.un('location', this.onLocation);
     BackgroundGeolocation.un('motionchange', this.onMotionChange);
   },
   onLocation(location) {
+        BackgroundGeolocation.changePace(true);
+    BackgroundGeolocation.watchPosition(success => {
+      console.log('- Watch position: ', location);)
+    }, (error) => {
+      console.log('- Watch position: ', error)
+    }, {
+      locationUpdateInterval: 1000    // <-- retrieve a location every 5s.
+    }
     console.log('- [js]location: ', JSON.stringify(location));
-
-    // fetch('https://requestb.in/124tk7t1', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(location)
-    //   }).then(success => {
-    //     console.log('success###')
-    //   }).catch(error => {
-    //     console.log('error###', error)
-    //   })
-    // }
     var pattern = [0];
     // var patternLiteral = '[]';
     Vibration.vibrate(pattern);
   },
   onMotionChange(location) {
+        BackgroundGeolocation.changePace(true);
+    BackgroundGeolocation.watchPosition(success => {
+      console.log('- Watch position: ', location);)
+    }, (error) => {
+      console.log('- Watch position: ', error)
+    }, {
+      locationUpdateInterval: 1000    // <-- retrieve a location every 5s.
+    }
     console.log('- [js]motionchanged: ', JSON.stringify(location));
-    // fetch('https://requestb.in/124tk7t1', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(location)
-    //   }).then(success => {
-    //     console.log('success###')
-    //   }).catch(error => {
-    //     console.log('error###', error)
-    //   })
-    // }
     var pattern = [0];
     // var patternLiteral = '[]';
     Vibration.vibrate(pattern);
